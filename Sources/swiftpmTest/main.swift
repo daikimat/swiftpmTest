@@ -8,6 +8,8 @@ struct SwiftpmTest: ParsableCommand {
     print(self.arg1)
     print(self.arg1)
     print(self.arg1)
+    Shell.run("pwd")
+    Shell.run("ls, -la")
   }
 }
 
