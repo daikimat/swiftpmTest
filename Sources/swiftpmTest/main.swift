@@ -1,15 +1,25 @@
 import ArgumentParser
 
 struct SwiftpmTest: ParsableCommand {
-  @Argument(help: "引数１")
-  var arg1: String
+  @Argument(help: "GitHubのPull Request read/write 権限を持つToken")
+  var githubToken: String
 
   mutating func run() throws {
-    print(self.arg1)
-    print(self.arg1)
-    print(self.arg1)
     Shell.run("pwd")
     Shell.run("ls, -la")
+    Shell.run("git, checkout", "-b", "newBranch")
+    Shell.run("git", "commit", "-m", "empty commit", "--allow-empty")    
+    Shell.run("git, push", "origin", "newBranch")
+    let apiGitHubCreatePullRequest = APIGitHubCreatePullRequest(
+        token: self.githubToken,
+        owner: "daikimat",
+        repo: "swiftpmTest",
+        head: "newBranch",
+        base: "main",
+        title: "Sample PR",
+        body: ""
+    )
+    _ = APIClient().request(apiGitHubCreatePullRequest)
   }
 }
 

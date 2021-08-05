@@ -2,7 +2,7 @@ name: test
 
 on:
   push:
-    branches: [master]
+    branches: [sample]
 
 jobs:
   build:
@@ -10,4 +10,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      run: swift run swiftpmTest aaa
+      run: swift run swiftpmTest ${{ secrets.GITHUB_TOKEN }}
