@@ -1,0 +1,13 @@
+name: task-workflow
+
+on:
+  push:
+    branches-ignore:
+      - master
+
+jobs:
+  hello:
+    name: hello
+    runs-on: macos-latest
+    steps:
+      - run: echo "hello world"
