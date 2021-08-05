@@ -5,11 +5,9 @@ struct SwiftpmTest: ParsableCommand {
   var githubToken: String
 
   mutating func run() throws {
-    Shell.run("pwd")
-    Shell.run("ls, -la")
     Shell.run("git, checkout", "-b", "newBranch")
     Shell.run("git", "commit", "-m", "empty commit", "--allow-empty")    
-    Shell.run("git, push", "origin", "newBranch")
+    Shell.run("git", "push", "origin", "newBranch")
     let apiGitHubCreatePullRequest = APIGitHubCreatePullRequest(
         token: self.githubToken,
         owner: "daikimat",
