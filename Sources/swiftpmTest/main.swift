@@ -13,7 +13,7 @@ struct SwiftpmTest: ParsableCommand {
         owner: "daikimat",
         repo: "swiftpmTest",
         head: "newBranch",
-        base: "main",
+        base: "master",
         title: "Sample PR",
         body: ""
     )
