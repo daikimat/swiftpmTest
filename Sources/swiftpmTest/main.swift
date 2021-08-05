@@ -5,11 +5,12 @@ struct SwiftpmTest: ParsableCommand {
   var githubToken: String
 
   mutating func run() throws {
-    Shell.run("git, checkout", "-b", "newBranch")
+    Shell.run("git", "checkout", "-b", "newBranch")
     Shell.run("git", "commit", "-m", "empty commit", "--allow-empty")    
+    Shell.run("git", "branch") 
     guard
-        Shell.run(
-            "git", "push", "--force", "origin", ""
+       Shell.run(
+            "git", "push", "--force", "origin", "newBranch"
         ).success
     else { return }
 
